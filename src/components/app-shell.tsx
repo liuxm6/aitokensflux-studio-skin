@@ -112,9 +112,7 @@ export function AppShell(props: { children: ReactNode }) {
     <div className="top-actions">
       <Button
         variant="ghost"
-        className={
-          isHome ? "icon-button desktop-action home-secondary-action" : "icon-button desktop-action"
-        }
+        className="icon-button desktop-action"
         aria-label={t("Search pages and models")}
         onClick={() => setCommand(true)}
       >
@@ -134,9 +132,7 @@ export function AppShell(props: { children: ReactNode }) {
       />
       <Button
         variant="ghost"
-        className={
-          isHome ? "icon-button desktop-action home-secondary-action" : "icon-button desktop-action"
-        }
+        className="icon-button desktop-action"
         aria-label={t("Toggle color theme")}
         onClick={() => setPreference({ theme: theme === "dark" ? "light" : "dark" })}
       >
@@ -146,12 +142,8 @@ export function AppShell(props: { children: ReactNode }) {
           <Moon size={18} aria-hidden="true" />
         )}
       </Button>
-      {isHome && (
-        <Button
-          variant="ghost"
-          className="home-signin hidden min-[1200px]:inline-flex"
-          onClick={() => setAuth(true)}
-        >
+      {!context.console && (
+        <Button variant="ghost" className="desktop-action" onClick={() => setAuth(true)}>
           {t("Sign in")}
         </Button>
       )}
@@ -266,30 +258,6 @@ export function AppShell(props: { children: ReactNode }) {
                   </AppLink>
                 ))}
               </div>
-              {isHome && (
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant="ghost"
-                    className="icon-button"
-                    aria-label={t("Search pages and models")}
-                    onClick={() => setCommand(true)}
-                  >
-                    <Search size={18} aria-hidden="true" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    className="icon-button"
-                    aria-label={t("Toggle color theme")}
-                    onClick={() => setPreference({ theme: theme === "dark" ? "light" : "dark" })}
-                  >
-                    {theme === "dark" ? (
-                      <Sun size={18} aria-hidden="true" />
-                    ) : (
-                      <Moon size={18} aria-hidden="true" />
-                    )}
-                  </Button>
-                </div>
-              )}
               <DemoNotice />
             </div>
           </footer>
@@ -313,7 +281,7 @@ export function AppShell(props: { children: ReactNode }) {
         title={t("Navigation")}
         contentClassName="mobile-sidebar sm:max-w-md"
       >
-        <div className="flex gap-2 mb-5">
+        <div className="flex flex-wrap gap-2 mb-5">
           <Button
             variant="outline"
             onClick={() => {
@@ -330,6 +298,27 @@ export function AppShell(props: { children: ReactNode }) {
           >
             {t("Toggle color theme")}
           </Button>
+          {!context.console && (
+            <>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setMobile(false);
+                  setAuth(true);
+                }}
+              >
+                {t("Sign in")}
+              </Button>
+              <Button
+                onClick={() => {
+                  setMobile(false);
+                  setAuth(true);
+                }}
+              >
+                {t("Get started")}
+              </Button>
+            </>
+          )}
         </div>
         {context.console ? (
           <Sidebar path={path} onNavigate={() => setMobile(false)} />
