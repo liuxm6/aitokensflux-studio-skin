@@ -1,0 +1,41 @@
+/* Let tables scroll within the catalog instead of sizing its mobile grid track. */
+.catalog-page .catalog-layout > section {
+  min-width: 0;
+}
+
+.catalog-page .catalog-results-meta {
+  flex-wrap: wrap;
+}
+
+/* Base UI emits data-orientation, not the primitive's data-horizontal variant. */
+.model-detail-page > [data-slot="tabs"] {
+  flex-direction: column;
+  min-width: 0;
+}
+
+.model-detail-page [data-slot="tabs-content"] {
+  min-width: 0;
+}
+
+/* Keep numeric values intact inside their own cells, not just the viewport. */
+.model-detail-page .model-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.model-detail-page .model-stats .stat { min-width: 0; }
+.model-detail-page .model-stats .stat-value {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(1.25rem, 2.1vw, 1.875rem);
+  letter-spacing: -.02em;
+}
+
+@media (max-width: 767px) {
+  .model-detail-page .model-stats {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+    gap: 0;
+    padding-block: 0;
+  }
+  .model-detail-page .model-stats .stat { border: 0; padding: 18px; }
+  .model-detail-page .model-stats .stat:first-child {
+    grid-column: 1 / -1;
+  }
+  .model-detail-page .model-stats .stat + .stat { border-top: 1px solid var(--border); }
+}

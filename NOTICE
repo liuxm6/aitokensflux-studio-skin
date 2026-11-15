@@ -1,0 +1,29 @@
+Ai Tokens Flux — Studio Skin
+Independent client design prototype for new-api.
+
+The following local UI and interaction modules are derived from new-api:
+- src/components/ui/{button,input,dialog,alert-dialog,table,tooltip,native-select,select,switch,tabs}.tsx
+- src/components/{dialog,confirm-dialog,copy-button}.tsx
+- src/hooks/use-copy-to-clipboard.ts
+- src/lib/copy-to-clipboard.ts
+- The locale normalization and ordinary numeric formatting behavior in src/lib/format.ts
+
+Copyright (C) 2023-2026 QuantumNous
+Licensed under the GNU Affero General Public License, version 3 or later.
+The original copyright and license notices are retained in derived files.
+See LICENSE for the license text.
+
+Adaptations in this prototype include local imports, Lucide icons, localized
+close labels, demo-specific theme tokens, pure formatting without live stores,
+and local page composition. No production API/authentication modules are included.
+
+Third-party packages retain their own licenses; see their package metadata and
+license files. Model/provider names identify sample content only. Model prices,
+specifications, usage figures and service status are illustrative, not live data.
+
+The local provider mark paths in src/components/provider-logo.tsx are adapted
+from Simple Icons data (CC0 1.0). Provider names and marks remain trademarks
+of their respective owners and are used here only as sample UI identifiers.
+Meta and Qwen mark sources (retrieved 2026-11-15):
+- https://cdn.simpleicons.org/meta
+- https://cdn.simpleicons.org/qwen

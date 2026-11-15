@@ -1,0 +1,50 @@
+/* Chinese reading rhythm. Keep Latin brand names and code in their existing fonts. */
+  .hero h1:lang(zh),
+  .page-heading h1:lang(zh),
+  .discover-results-heading h2:lang(zh) {
+    letter-spacing: 0;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .hero h1:lang(zh) .hero-title-lead,
+  .hero h1:lang(zh) .hero-accent {
+    display: inline-block;
+    max-inline-size: 100%;
+    vertical-align: top;
+  }
+
+  .hero-description:lang(zh) { line-height: 1.8; }
+  .sidebar-link:lang(zh), .field:lang(zh) label { font-size: 14px; }
+  .field:lang(zh) small { text-wrap: balance; }
+  .model-card:lang(zh) p { font-size: 14px; line-height: 1.75; }
+  .model-meta:lang(zh), .stat-label:lang(zh), .breadcrumb:lang(zh) { font-size: 13px; }
+  .nav-group-label:lang(zh), .context-switch:lang(zh) small,
+  .stat-note:lang(zh), .demo-notice:lang(zh), .status-badge:lang(zh),
+  .tag:lang(zh), .preview-status:lang(zh), .preview-composer-meta:lang(zh),
+  .quick-action:lang(zh) small, .discover-result-count:lang(zh),
+  .discover-footnote:lang(zh) > p { font-size: 12px; line-height: 1.6; }
+  .setting-row:lang(zh) p { font-size: 13px; line-height: 1.7; }
+  .discover-usecase-copy:lang(zh) strong { font-size: 14px; }
+
+@media (max-width: 767px) {
+  .hero h1:lang(zh) { font-size: clamp(28px, 8vw, 36px); }
+  .hero-description:lang(zh) { font-size: 16px; }
+  .discover-usecase-grid:lang(zh) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .discover-page:lang(zh) .discover-usecase {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 14px;
+    min-height: 0;
+  }
+  .discover-usecase:lang(zh) .discover-usecase-icon { width: 28px; height: 28px; }
+  .discover-intro:lang(zh) { margin-bottom: 24px; }
+}
+
+/* At narrow/zoomed widths, reflow rather than truncate the task descriptions. */
+@media (max-width: 319px) {
+  .discover-usecase-grid:lang(zh) { grid-template-columns: 1fr; }
+}

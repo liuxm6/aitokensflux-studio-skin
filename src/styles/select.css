@@ -1,0 +1,55 @@
+@layer components {
+  .studio-select { display: inline-flex; max-width: 100%; min-width: 0; }
+  .studio-select-trigger {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px;
+    border: 1px solid var(--input); border-radius: 10px;
+    background: var(--card); color: var(--foreground);
+    font-family: 'DM Sans Variable', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-size: 14px; line-height: 1.5; text-align: left; cursor: pointer;
+    transition: border-color 140ms, background-color 140ms, box-shadow 140ms;
+  }
+  .studio-select-trigger:hover:not(:disabled) { border-color: var(--ring); }
+  .studio-select-trigger:focus-visible, .studio-select-trigger[aria-expanded='true'] {
+    outline: 2px solid var(--ring); outline-offset: 2px; border-color: var(--ring);
+  }
+  .studio-select-trigger[aria-invalid='true'] { border-color: var(--destructive); }
+  .studio-select-trigger:disabled { cursor: not-allowed; opacity: .5; }
+  .studio-select-value { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .studio-select-icon { display: inline-flex; flex-shrink: 0; color: var(--muted-foreground); transition: transform 140ms; }
+  .studio-select-trigger[aria-expanded='true'] .studio-select-icon { transform: rotate(180deg); }
+  .studio-select-positioner { z-index: 70; outline: none; }
+  /* A dismissed popup must not extend the document when the viewport changes mid-exit. */
+  .studio-select-positioner[data-closed] { display: none; }
+  .studio-select-popup {
+    box-sizing: border-box; min-width: 200px; width: var(--anchor-width);
+    max-width: min(28rem, calc(100vw - 24px)); max-height: min(320px, var(--available-height));
+    overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+    padding: 6px; border: 1px solid var(--border); border-radius: 12px;
+    background: var(--popover); color: var(--popover-foreground);
+    box-shadow: 0 14px 40px -14px rgb(18 24 40 / .25), 0 3px 8px -4px rgb(18 24 40 / .1);
+    font-family: 'DM Sans Variable', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-size: 14px; line-height: 1.5; outline: none;
+    transform-origin: var(--transform-origin); transition: opacity 100ms, transform 100ms;
+  }
+  .studio-select-popup[data-starting-style], .studio-select-popup[data-ending-style] { opacity: 0; transform: translateY(-3px) scale(.99); }
+  .studio-select-list { display: flex; flex-direction: column; gap: 3px; }
+  .studio-select-item {
+    position: relative; display: flex; align-items: center; gap: 10px;
+    width: 100%; min-height: 42px; padding: 10px 34px 10px 12px;
+    border-radius: 7px; cursor: pointer; outline: none; user-select: none;
+  }
+  .studio-select-item[data-selected] { background: var(--secondary); color: var(--secondary-foreground); font-weight: 600; }
+  .studio-select-item[data-highlighted] { background: var(--muted); color: var(--foreground); }
+  .studio-select-item[data-selected][data-highlighted] { background: var(--secondary); color: var(--secondary-foreground); }
+  .studio-select-item[data-disabled] { opacity: .45; cursor: not-allowed; }
+  .studio-select-item-text { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+  .studio-select-check { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; color: var(--primary); }
+}
+@media (max-width: 767px) {
+  .studio-select-item { min-height: 44px; }
+}
+@media (forced-colors: active) {
+  .studio-select-popup { border: 1px solid CanvasText; }
+  .studio-select-item[data-highlighted] { outline: 1px solid Highlight; }
+}

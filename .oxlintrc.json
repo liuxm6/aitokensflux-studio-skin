@@ -1,0 +1,13 @@
+{
+  "plugins": ["typescript", "react"],
+  "categories": {"correctness": "error"},
+  "env": {"browser": true, "node": true},
+  "ignorePatterns": ["node_modules", "dist"],
+  "rules": {
+    "no-nested-ternary": "error",
+    "typescript/no-explicit-any": "error",
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "error",
+    "react/jsx-key": "error"
+  }
+}
